@@ -8,7 +8,7 @@ keys.forEach(item => {
 
 
 function test(item) {
-  var id = item.id;
+  var value = item.innerHTML;
   var textField = document.getElementById('textField');
-  textField.value = textField.value + id;
+  textField.value = textField.value + value;
 }
