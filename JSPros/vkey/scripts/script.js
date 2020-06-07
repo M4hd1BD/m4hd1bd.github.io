@@ -14,8 +14,11 @@ function test(item) {
   var textFieldLenght = textFieldValue.length;
 
   if (item.id == 'backpsace') {
-    newTextFieldValue = textFieldValue.replace(textFieldValue[textFieldLenght - 1],'');
+    newTextFieldValue = textFieldValue.substring(0, textFieldLenght - 1);
     textFieldID.value = newTextFieldValue;
+  }
+  else if (item.id == 'space') {
+    textFieldID.value = textFieldValue + ' ';
   }
   else {
     textFieldID.value = textFieldValue + value;

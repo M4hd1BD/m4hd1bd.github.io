@@ -8,7 +8,7 @@
   font-size: 1.5vw;
 }
 
-#zero, #cross, #enter, #shift, #space {
+#zero, #backpsace, #enter, #shift, #space {
   border-right:0;
 }
 
