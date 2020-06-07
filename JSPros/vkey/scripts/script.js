@@ -20,6 +20,10 @@ function test(item) {
   else if (item.id == 'space') {
     textFieldID.value = textFieldValue + ' ';
   }
+  else if (item.id == 'enter') {
+    textFieldID.value = textFieldValue + "\n";
+    console.log('passed');
+  }
   else {
     textFieldID.value = textFieldValue + value;
   }
