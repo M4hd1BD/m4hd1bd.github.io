@@ -1,4 +1,5 @@
 var keys = document.querySelectorAll('.key');
+var textFieldID = document.getElementById('textField');
 var shiftIsActive = false;
 var shiftIsHard = false;
 
@@ -12,7 +13,6 @@ keys.forEach(item => {
 //defining the function so that it can enter whatever user pressed
 function keyPressed(item) {
   var value = item.innerHTML;
-  var textFieldID = document.getElementById('textField');
   var textFieldValue = textFieldID.value;
   var textFieldLenght = textFieldValue.length;
 
