@@ -2,23 +2,33 @@ var keys = document.querySelectorAll('.key');
 var shiftIsActive = false;
 var shiftIsHard = false;
 
+//adding an event listener to every key so that I can execute the function
 keys.forEach(item => {
   item.addEventListener('click', function() {
-    test(item);
+    keyPressed(item);
   });
 });
 
-function test(item) {
+//defining the function so that it can enter whatever user pressed
+function keyPressed(item) {
   var value = item.innerHTML;
   var textFieldID = document.getElementById('textField');
   var textFieldValue = textFieldID.value;
   var textFieldLenght = textFieldValue.length;
 
+  //adding backspace functionality so that if user press it, it deletes the last character
   if (item.id == 'backpsace') {
     newTextFieldValue = textFieldValue.substring(0, textFieldLenght - 1);
     textFieldID.value = newTextFieldValue;
   }
+
+  //adding shift button functionality so that if user press it once it only make
+  //the character uppercase for once and if user press it twice character stays
+  //uppercase untill user press it for third time
   else if (item.id == 'shift') {
+
+    //this scenario is for if user press the shift key previous time, if user did
+    //then making sure it stays that way, I mean uppercase
     if (shiftIsActive && !shiftIsHard) {
       shiftIsActive = true;
       shiftIsHard = true;
@@ -27,6 +37,9 @@ function test(item) {
         item.innerHTML = keyValue.toUpperCase();
       });
     }
+
+    //this is for if user already pressed the shift key twice, it is for third time
+    //shift button will be reseted this time
     else if (shiftIsActive && shiftIsHard) {
       keys.forEach(item => {
         var keyValue = item.innerHTML;
@@ -35,6 +48,9 @@ function test(item) {
       shiftIsActive = false;
       shiftIsHard = false;
     }
+
+    //this is for the first time user press the shift key, making the character
+    //uppercase and setting the control variable
     else if (!shiftIsActive && !shiftIsHard) {
       keys.forEach(item => {
         var keyValue = item.innerHTML;
@@ -43,16 +59,28 @@ function test(item) {
       shiftIsActive = true;
     }
   }
+
+  //simply adding a space if user press the space button
   else if (item.id == 'space') {
     textFieldID.value = textFieldValue + ' ';
   }
+
+  //simply adding a new line if user press the enter button
   else if (item.id == 'enter') {
     textFieldID.value = textFieldValue + "\n";
   }
+
+  //basically for everother button, inserting whatever assigned to it
   else {
+
+    //checking if shift is already pressed twice, if it is then just inserting
+    //the previously changed uppercase characters and doing nothing else
     if (shiftIsActive && shiftIsHard) {
       textFieldID.value = textFieldValue + value;
     }
+
+    //this is for if shift is pressed once then just inserting the changed uppercase
+    //character and restting them to lowercase
     else if (shiftIsActive && !shiftIsHard) {
       textFieldID.value = textFieldValue + value;
       keys.forEach(item => {
@@ -61,6 +89,9 @@ function test(item) {
       });
       shiftIsActive = false;
     }
+
+    //this is for other scenarios like shift is not pressed once or shift is
+    //pressed three times which is basically shift not got pressed once
     else {
       textFieldID.value = textFieldValue + value;
     }
