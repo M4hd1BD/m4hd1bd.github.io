@@ -3,6 +3,13 @@ var textFieldID = document.getElementById('textField');
 var shiftIsActive = false;
 var shiftIsHard = false;
 
+//function to keep textarea always focused
+textFieldID.addEventListener("blur", function() {
+  setTimeout(function() {
+    textFieldID.focus();
+  }, 0);
+});
+
 //adding an event listener to every key so that I can execute the function
 keys.forEach(item => {
   item.addEventListener('click', function() {
