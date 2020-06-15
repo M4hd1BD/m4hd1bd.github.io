@@ -9,8 +9,12 @@
   user-select: none;
 }
 
-#zero, #backpsace, #enter, #shift, #space {
+#p, #zero, #l, #backpsace, #enter, #question, #exclaimation {
   border-right:0;
+}
+
+.hideLayout {
+  display: none;
 }
 
 @media screen and (max-width: 767px){

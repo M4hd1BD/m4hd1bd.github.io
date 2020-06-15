@@ -2,6 +2,19 @@ var keys = document.querySelectorAll('.key');
 var textFieldID = document.getElementById('textField');
 var shiftIsActive = false;
 var shiftIsHard = false;
+var firstLayout = document.getElementById('firstLayout');
+var secondLayout = document.getElementById('secondLayout');
+
+//functions to switch keyboard layout when that particular button is pressed
+function getSpecials() {
+  firstLayout.className = "hideLayout";
+  secondLayout.className = "row";
+}
+
+function getRegulars() {
+  secondLayout.className = "hideLayout";
+  firstLayout.className = "row";
+}
 
 //function to keep textarea always focused
 textFieldID.addEventListener("blur", function() {
@@ -77,7 +90,17 @@ function keyPressed(item) {
     textFieldID.value = textFieldValue + "\n";
   }
 
-  //basically for everother button, inserting whatever assigned to it
+  //if user want to write any special character which isn't already here
+  else if (item.id == 'getSpecials') {
+    getSpecials();
+  }
+
+  //if user wants to go back to write characters
+  else if (item.id == 'getRegulars') {
+    getRegulars();
+  }
+
+  //basically for everyother button, inserting whatever assigned to it
   else {
 
     //checking if shift is already pressed twice, if it is then just inserting
