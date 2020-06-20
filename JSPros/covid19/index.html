@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Covid19 Stats | JS Projects</title>
+    <title>Covid19 Information | JS Projects</title>
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
   </head>
@@ -16,57 +16,69 @@
 
         <div class="mainHeading row">
           <div class="col-12 text-center my-5">
-            <h1 class="my-3">Covid19 Stats</h1>
+            <h1 class="my-3">Covid19 Information</h1>
             <h4>All codes available at <a href="https://github.com/M4hd1BD/m4hd1bd.github.io">Github</a></h4>
           </div>
         </div>
 
-        <div class="mainContent row justify-content-center my-5">
+        <div class="mainContent justify-content-center my-5">
 
-          <div class="col-4 totalRecovered">
+          <div class="row justify-content-center my-5">
 
-            <div class="card text-center border-success">
-              <div class="card-header text-success bg-danger font-weight-bold">
-                Total Recovered
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">4073304</h5>
-              </div>
-              <div class="card-footer text-muted">
-                Just Now
-              </div>
+            <div class="col-12 text-center">
+              <h2 style="color:#e66739;">Coronavirus Live Update</h2>
+              <h5 style="color:#32a852">Last updated: <span id="time"></span> seconds ago.</h5>
             </div>
-
           </div>
 
-          <div class="col-4 totalConfirmed">
+          <div class="row justify-content-center my-5">
 
-            <div class="card text-center border-warning">
-              <div class="card-header text-warning bg-info font-weight-bold">
-                Total Confirmed
+            <div class="col-md-4 totalRecovered my-3">
+
+              <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
+                <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#D6ED17FF">
+                  Total Recovered
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title" id="totalRecoveredNum" style="color:#06d444;"></h3>
+                </div>
+                <div class="card-footer text-muted">
+                  Less than a minute
+                </div>
               </div>
-              <div class="card-body">
-                <h5 class="card-title">8449912</h5>
-              </div>
-              <div class="card-footer text-muted">
-                Just Now
-              </div>
+
             </div>
 
-          </div>
+            <div class="col-md-4 totalConfirmed my-3">
 
-          <div class="col-4 totalDeaths">
+              <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
+                <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#D6ED17FF">
+                  Total Confirmed
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title" id="totalConfirmedNum" style="color:#e3b200;"></h3>
+                </div>
+                <div class="card-footer text-muted">
+                  Less than a minute
+                </div>
+              </div>
 
-            <div class="card text-center border-danger">
-              <div class="card-header text-danger bg-info font-weight-bold">
-                Total Deaths
+            </div>
+
+            <div class="col-md-4 totalDeaths my-3">
+
+              <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
+                <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#D6ED17FF">
+                  Total Deaths
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title" id="totalDeathsNum" style="color:#d10d0d;"></h3>
+                </div>
+                <div class="card-footer text-muted">
+                  Less than a minute
+                </div>
               </div>
-              <div class="card-body">
-                <h5 class="card-title">457172</h5>
-              </div>
-              <div class="card-footer text-muted">
-                Just Now
-              </div>
+
             </div>
 
           </div>
