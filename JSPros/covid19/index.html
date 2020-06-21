@@ -10,7 +10,7 @@
   </head>
   <body>
 
-    <section class="mainContainer container-fluid vh-100">
+    <section class="mainContainer container-fluid">
 
       <div class="container-xl">
 
@@ -23,65 +23,136 @@
 
         <div class="mainContent justify-content-center my-5">
 
-          <div class="row justify-content-center my-5">
+          <!-- Start of total updates -->
+          <div class="totalUpdates my-5">
 
-            <div class="col-12 text-center">
-              <h2 style="color:#e66739;">Coronavirus Live Update</h2>
-              <h5 style="color:#32a852">Last updated: <span id="time"></span> seconds ago.</h5>
+            <div class="row justify-content-center my-5">
+
+              <div class="col-12 text-center">
+                <h2 style="color:#e66739;">Coronavirus Live Update</h2>
+                <h5 style="color:#32a852">Last updated: <span id="time"></span> seconds ago.</h5>
+              </div>
             </div>
+
+            <div class="row justify-content-center my-5">
+
+              <div class="col-md-4 totalRecovered my-3">
+
+                <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
+                  <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#8BD056;">
+                    Total Recovered
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title" id="totalRecoveredNum" style="color:#06d444;"></h3>
+                  </div>
+                  <div class="card-footer text-muted">
+                    Less than a minute ago
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-4 totalConfirmed my-3">
+
+                <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
+                  <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#D6ED17FF">
+                    Total Confirmed
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title" id="totalConfirmedNum" style="color:#e3b200;"></h3>
+                  </div>
+                  <div class="card-footer text-muted">
+                    Less than a minute ago
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-4 totalDeaths my-3">
+
+                <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
+                  <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#D6ED17FF">
+                    Total Deaths
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title" id="totalDeathsNum" style="color:#d10d0d;"></h3>
+                  </div>
+                  <div class="card-footer text-muted">
+                    Less than a minute ago
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
+          <!-- end of total updates -->
 
-          <div class="row justify-content-center my-5">
+          <!-- start of 24 hours updates -->
+          <div class="twentyFourHoursUpdates my-5">
 
-            <div class="col-md-4 totalRecovered my-3">
+            <div class="row justify-content-center my-5">
 
-              <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
-                <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#D6ED17FF">
-                  Total Recovered
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title" id="totalRecoveredNum" style="color:#06d444;"></h3>
-                </div>
-                <div class="card-footer text-muted">
-                  Less than a minute
-                </div>
+              <div class="col-12 text-center mt-5">
+                <h2 style="color:#e66739;">Last 24 Hours Update</h2>
               </div>
-
             </div>
 
-            <div class="col-md-4 totalConfirmed my-3">
+            <div class="row justify-content-center my-5">
 
-              <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
-                <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#D6ED17FF">
-                  Total Confirmed
+              <div class="col-md-4 totalRecovered my-3">
+
+                <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
+                  <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#8BD056;">
+                    Active Cases
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title" id="twentyFourTotalRecoveredNum" style="color:#06d444;"></h3>
+                  </div>
+                  <div class="card-footer text-muted">
+                    Less than a minute ago
+                  </div>
                 </div>
-                <div class="card-body">
-                  <h3 class="card-title" id="totalConfirmedNum" style="color:#e3b200;"></h3>
-                </div>
-                <div class="card-footer text-muted">
-                  Less than a minute
-                </div>
+
               </div>
 
-            </div>
+              <div class="col-md-4 totalConfirmed my-3">
 
-            <div class="col-md-4 totalDeaths my-3">
+                <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
+                  <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#D6ED17FF">
+                    New Confirmed
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title" id="twentyFourTotalConfirmedNum" style="color:#e3b200;"></h3>
+                  </div>
+                  <div class="card-footer text-muted">
+                    Less than a minute ago
+                  </div>
+                </div>
 
-              <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
-                <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#D6ED17FF">
-                  Total Deaths
+              </div>
+
+              <div class="col-md-4 totalDeaths my-3">
+
+                <div class="card text-center" style="border: 1px solid #F2AA4CFF;">
+                  <div class="card-header font-weight-bold" style="background-color: #606060FF; color:#D6ED17FF">
+                    New Deaths
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title" id="twentyFourTotalDeathsNum" style="color:#d10d0d;"></h3>
+                  </div>
+                  <div class="card-footer text-muted">
+                    Less than a minute ago
+                  </div>
                 </div>
-                <div class="card-body">
-                  <h3 class="card-title" id="totalDeathsNum" style="color:#d10d0d;"></h3>
-                </div>
-                <div class="card-footer text-muted">
-                  Less than a minute
-                </div>
+
               </div>
 
             </div>
 
           </div>
+          <!-- end of 24 hours updates -->
 
         </div>
 
