@@ -5,18 +5,20 @@ var twentyFourTotalRecovered = document.getElementById('twentyFourTotalRecovered
 var twentyFourTotalConfirmed = document.getElementById('twentyFourTotalConfirmedNum');
 var twentyFourTotalDeaths = document.getElementById('twentyFourTotalDeathsNum');
 var time = document.getElementById('time');
-var currentTime = 0;
+var myHeaders = new Headers();
+myHeaders.append("Subscription-Key", "3958c75e429f4725a5994c65a1484465");
 
 //setting up the parameter for api request
 var requestOptions = {
   method: 'GET',
+  headers: myHeaders,
   redirect: 'follow'
 };
 
 //function for getting total data
-function getTotalData() {
+function getData() {
   //intializing api request
-  fetch("https://api.coronatracker.com/v3/stats/worldometer/global", requestOptions)
+  fetch("https://api.smartable.ai/coronavirus/stats/global", requestOptions)
 
   //getting response as JSON
   .then(response => response.json())
@@ -25,63 +27,35 @@ function getTotalData() {
   .then(result => {
 
     //updating Total recovered
-    totalRecovered.innerHTML = result.totalRecovered;
+    totalRecovered.innerHTML = result.stats.totalRecoveredCases;
 
     //updating Total confirmed cases
-    totalConfirmed.innerHTML = result.totalConfirmed;
+    totalConfirmed.innerHTML = result.stats.totalConfirmedCases;
 
     //updating Total deaths
-    totalDeaths.innerHTML = result.totalDeaths;
-    
-  })
-
-  //showing error messege if there's any
-  .catch(error => console.log("There's an error: " + error));
-
-  //resetting the timer
-  currentTime = 0;
-
-  //getting the data every five seconds i.e. updating it
-  setTimeout(getTotalData, 60000);
-}
-
-//function for getting 24 hours data
-function getTwentyFourHoursData() {
-
-  //intializing api request
-  fetch("http://api.coronatracker.com/v3/stats/worldometer/global", requestOptions)
-
-  //getting response as JSON
-  .then(response => response.json())
-
-  //doing stuffs with newly retrieved data
-  .then(result => {
+    totalDeaths.innerHTML = result.stats.totalDeaths;
 
     //updating 24 hours Total recovered
-    twentyFourTotalRecovered.innerHTML = result.totalActiveCases;
+    twentyFourTotalRecovered.innerHTML = result.stats.newlyRecoveredCases;
 
     //updating 24 hours Total confirmed cases
-    twentyFourTotalConfirmed.innerHTML = result.totalNewCases;
+    twentyFourTotalConfirmed.innerHTML = result.stats.newlyConfirmedCases;
 
     //updating 24 hours Total deaths
-    twentyFourTotalDeaths.innerHTML = result.totalNewDeaths;
+    twentyFourTotalDeaths.innerHTML = result.stats.newDeaths;
+
+    //setting last update time
+    var lastUpdate = result.updatedDateTime;
+    var formattedTime = lastUpdate.substring(11,16) + ", " + lastUpdate.substring(0,10);
+    time.innerHTML = formattedTime;
+
   })
 
   //showing error messege if there's any
   .catch(error => console.log("There's an error: " + error));
 
-  //getting the data every five seconds i.e. updating it
-  setTimeout(getTwentyFourHoursData, 600000);
+  //getting the data every one minutes i.e. updating it
+  setTimeout(getData, 3600000);
 }
 
-//setting the last update time, i don't know if it is a efficent way to do so
-var setTime = setInterval(function() {
-
-    time.innerHTML = currentTime;
-
-  currentTime += 1;
-
-}, 1000);
-
-getTotalData();
-getTwentyFourHoursData();
+getData();
