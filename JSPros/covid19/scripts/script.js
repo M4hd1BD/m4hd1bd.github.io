@@ -103,7 +103,7 @@ function insertNews() {
           link.setAttribute('class', 'card-link');
 
           if (item.images == null) {
-            img.src = '404.png';
+            img.src = 'images/404.png';
           }
           else {
             img.src = item.images[0].url;
