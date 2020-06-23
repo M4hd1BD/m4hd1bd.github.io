@@ -58,4 +58,82 @@ function getData() {
   setTimeout(getData, 3600000);
 }
 
+//function for getting and showing news
+function insertNews() {
+
+  fetch("https://api.smartable.ai/coronavirus/news/global", requestOptions)
+
+    .then(response => response.json())
+
+    .then(result => {
+
+        const cardDeck = document.createElement('div');
+        cardDeck.setAttribute('class', 'row row-cols-1 row-cols-sm-2 row-cols-md-3');
+
+        var body = document.getElementById('news');
+        body.appendChild(cardDeck);
+
+        allnews = result.news;
+
+
+        allnews.forEach(item => {
+
+          const card = document.createElement('div');
+          card.setAttribute('class', 'card h-100');
+
+          const col = document.createElement('div');
+          col.setAttribute('class', 'col my-4');
+
+          const img = document.createElement('img');
+          img.setAttribute('class', 'card-img-top img-thumbnail cardImage');
+
+          const cardBody = document.createElement('div');
+          cardBody.setAttribute('class', 'card-body');
+
+          const cardTitle = document.createElement('h5');
+          cardTitle.setAttribute('class', 'card-title');
+
+          const cardText = document.createElement('p');
+          cardText.setAttribute('class', 'card-text');
+
+          const cardFooter = document.createElement('div');
+          cardFooter.setAttribute('class', 'card-footer');
+
+          const link = document.createElement('a');
+          link.setAttribute('class', 'card-link');
+
+          if (item.images == null) {
+            img.src = '404.png';
+          }
+          else {
+            img.src = item.images[0].url;
+          }
+
+          if (item.excerpt.length > 150) {
+            cardText.textContent = item.excerpt.substring(0,150) + '...';
+          }
+          else {
+            cardText.textContent = item.excerpt + '...';
+          }
+
+          link.href = item.webUrl;
+          link.textContent = 'Read more';
+          cardTitle.textContent = item.title;
+
+          cardFooter.appendChild(link);
+          cardBody.appendChild(cardTitle);
+          cardBody.appendChild(cardText);
+          card.appendChild(img);
+          card.appendChild(cardBody);
+          card.appendChild(cardFooter);
+          col.appendChild(card);
+          cardDeck.appendChild(col);
+
+        });
+
+  	})
+    .catch(error => console.log('error', error));
+}
+
 getData();
+insertNews();
