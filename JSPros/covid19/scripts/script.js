@@ -4,7 +4,23 @@ var totalDeaths = document.getElementById('totalDeathsNum');
 var twentyFourTotalRecovered = document.getElementById('twentyFourTotalRecoveredNum');
 var twentyFourTotalConfirmed = document.getElementById('twentyFourTotalConfirmedNum');
 var twentyFourTotalDeaths = document.getElementById('twentyFourTotalDeathsNum');
+var totalRecoveredCountry = document.getElementById('totalRecoveredNumCountry');
+var totalConfirmedCountry = document.getElementById('totalConfirmedNumCountry');
+var totalDeathsCountry = document.getElementById('totalDeathsNumCountry');
+var twentyFourTotalRecoveredCountry = document.getElementById('twentyFourTotalRecoveredNumCountry');
+var twentyFourTotalConfirmedCountry = document.getElementById('twentyFourTotalConfirmedNumCountry');
+var twentyFourTotalDeathsCountry = document.getElementById('twentyFourTotalDeathsNumCountry');
 var time = document.getElementById('time');
+var timeCountry = document.getElementById('timeCountry');
+var breakdowns = [];
+var countryNameCode = {};
+var countryName = [];
+var inputField = document.getElementById('searchBox');
+var searchResult = document.getElementById('searchResult');
+var searchButton = document.getElementById('searchButton');
+var countryStats = document.getElementById('countryStats');
+
+
 var myHeaders = new Headers();
 myHeaders.append("Subscription-Key", "3958c75e429f4725a5994c65a1484465");
 
@@ -49,12 +65,127 @@ function getData() {
     var formattedTime = lastUpdate.substring(11,16) + ", " + lastUpdate.substring(0,10);
     time.innerHTML = formattedTime;
 
+
+
+    //start of search things
+    breakdowns = result.stats.breakdowns;
+
+    breakdowns.forEach((item,i) => {
+
+      countryNameCode[item.location.countryOrRegion] = item.location.isoCode;
+
+    });
+
+    breakdowns.forEach((item,i) => {
+
+      countryName[i] = item.location.countryOrRegion;
+
+    });
+
+
+    inputField.addEventListener('keyup', function() {
+
+      function deleteResults() {
+        var previousResult = document.querySelectorAll('.result');
+
+        previousResult.forEach( item => {
+          item.remove();
+        });
+      }
+
+      deleteResults();
+
+      var inputValue = inputField.value;
+
+      if (inputValue != "") {
+        inputValue = inputValue[0].toUpperCase() + inputValue.substring(1,inputValue.length);
+      }
+
+      countryName.forEach( item => {
+
+        const singleResult = document.createElement('span');
+        singleResult.setAttribute('class', 'result my-3 font-weight-bold');
+
+        if (item.substring(0,inputValue.length) == inputValue && inputValue != "") {
+
+          singleResult.textContent = item;
+          searchResult.appendChild(singleResult);
+
+        }
+
+      });
+
+      var newResult = document.querySelectorAll('.result');
+
+      newResult.forEach( item => {
+
+        item.addEventListener('click', function() {
+
+          setInput(item.textContent);
+
+        });
+
+      });
+
+      function setInput(itemValue) {
+
+        inputField.value = itemValue;
+        deleteResults();
+      }
+
+    });
+
+    searchButton.addEventListener('click', function() {
+
+      getCountryData();
+
+    });
+
+    function getCountryData() {
+
+      var insertedCountry = inputField.value;
+
+      fetch("https://api.smartable.ai/coronavirus/stats/" + countryNameCode[insertedCountry], requestOptions)
+        .then(response => response.json())
+        .then(result => {
+
+          console.log(result);
+
+          //updating Total recovered
+          totalRecoveredCountry.innerHTML = result.stats.totalRecoveredCases;
+
+          //updating Total confirmed cases
+          totalConfirmedCountry.innerHTML = result.stats.totalConfirmedCases;
+
+          //updating Total deaths
+          totalDeathsCountry.innerHTML = result.stats.totalDeaths;
+
+          //updating 24 hours Total recovered
+          twentyFourTotalRecoveredCountry.innerHTML = result.stats.newlyRecoveredCases;
+
+          //updating 24 hours Total confirmed cases
+          twentyFourTotalConfirmedCountry.innerHTML = result.stats.newlyConfirmedCases;
+
+          //updating 24 hours Total deaths
+          twentyFourTotalDeathsCountry.innerHTML = result.stats.newDeaths;
+
+          //setting last update time
+          var lastUpdate = result.updatedDateTime;
+          var formattedTime = lastUpdate.substring(11,16) + ", " + lastUpdate.substring(0,10);
+          timeCountry.innerHTML = formattedTime;
+
+          countryStats.style.display = "block";
+
+        })
+        .catch(error => console.log('error', error));
+    }
+
   })
 
   //showing error messege if there's any
   .catch(error => console.log("There's an error: " + error));
 
-  //getting the data every one minutes i.e. updating it
+  //getting the data every one hour i.e. updating it
   setTimeout(getData, 3600000);
 }
 
@@ -117,7 +248,7 @@ function insertNews() {
           }
 
           link.href = item.webUrl;
-          link.textContent = 'Read more';
+          link.textContent = 'Read full story';
           cardTitle.textContent = item.title;
 
           cardFooter.appendChild(link);
@@ -133,6 +264,9 @@ function insertNews() {
 
   	})
     .catch(error => console.log('error', error));
+
+    //getting the data every one hour i.e. updating it
+    setTimeout(insertNews, 3600000);
 }
 
 getData();

@@ -5,3 +5,9 @@ body {
 .cardImage {
   height: 40% !important;
 }
+
+.result {
+    display: block;
+    user-select: none;
+    color: #28a745;
+}
