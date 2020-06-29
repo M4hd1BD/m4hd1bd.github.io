@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Covid19 Information | JS Projects</title>
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/master.css">
   </head>
   <body>
@@ -171,7 +172,7 @@
               <div class="col-12">
 
                 <div class="input-group mb-3 input-group-lg">
-                  <input type="text" class="form-control" id="searchBox"placeholder="Enter your country name" aria-label="Recipient's username" aria-describedby="button-addon2">
+                  <input type="text" class="form-control" id="searchBox"placeholder="Enter your country name" aria-label="Recipient's username" aria-describedby="button-addon2" required>
                   <div class="input-group-append">
                     <button class="btn btn-success" type="button" id="searchButton">Search</button>
                   </div>
@@ -193,6 +194,14 @@
           <!-- end of search section -->
 
 
+          <div class="row justify-content-center my-5" id="erroMessage" style="display:none;">
+
+            <div class="col-12 text-center">
+              <h3 class="text-danger">Please enter valid country name</h3>
+            </div>
+
+          </div>
+          
           <!-- start country stats -->
           <div class="my-5" id="countryStats" style="display:none;">
 
@@ -202,7 +211,7 @@
               <div class="row justify-content-center my-5">
 
                 <div class="col-12 text-center">
-                  <h2 style="color:#e66739;">Overall Statistics</h2>
+                  <h2 style="color:#e66739;">Overall Statistics of <span id="country"></span></h2>
                   <h5 style="color:#32a852">Last updated: <span id="timeCountry"></span></h5>
                 </div>
               </div>
