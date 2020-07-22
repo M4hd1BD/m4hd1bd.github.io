@@ -3,8 +3,8 @@
 }
 
 .key {
-  background-color: #9FBED1;
-  border-right: 1px solid white;
+  background-color: #f8f8f8;
+  border-right: 1px solid #5d8cae;
   font-size: 1.5vw;
   user-select: none;
 }
