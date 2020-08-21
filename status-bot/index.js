@@ -52,10 +52,8 @@ client.on('message', message => {
 		}
 	}
 
-	else {
-		timestamps.set(message.author.id, now);
-		setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-	}
+	timestamps.set(message.author.id, now);
+	setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
 	try {
 		command.execute(message, args);
