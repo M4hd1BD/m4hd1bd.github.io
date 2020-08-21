@@ -27,11 +27,12 @@ client.on('message', message => {
 	const args = message.content.slice(prfx.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
-	if (!client.commands.has(commandName)) {
-		return message.reply('Please make sure you wrote the right command.');
-	}
+	const command = client.commands.get(commandName)
+		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-	const command = client.commands.get(commandName);
+	if (!command) {
+		return message.reply('Ask something that makes sense, dummy!');
+	}
 
 	if (!cooldowns.has(command.name)) {
 		cooldowns.set(command.name, new Discord.Collection());
