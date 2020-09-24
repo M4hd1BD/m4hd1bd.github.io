@@ -11,4 +11,10 @@ body {
     display: block;
     user-select: none;
     color: #28a745;
+    padding: 5px;
+}
+
+.result:hover {
+  background-color: #28a745;
+  color: White;
 }
