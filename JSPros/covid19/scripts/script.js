@@ -24,20 +24,21 @@ var isValid = false; //for checking inserted countries validity
 var erroMessage = document.getElementById('erroMessage'); //for showing error message
 
 //setting up header to provide my subsciption key for the api
-var myHeaders = new Headers();
-myHeaders.append("Subscription-Key", "3958c75e429f4725a5994c65a1484465");
+
 
 //setting up the parameter for api request
 var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
+  'method': 'GET',
+  'headers': {
+		'x-rapidapi-host': "coronavirus-smartable.p.rapidapi.com",
+		'x-rapidapi-key': "5ac24ba852mshe1c1c58b36846b2p1b6805jsn6f0b2ae5c9a8"
+	}
 };
 
 //function for getting total data
 function getData() {
   //intializing api request
-  fetch("https://api.smartable.ai/coronavirus/stats/global", requestOptions)
+  fetch("https://coronavirus-smartable.p.rapidapi.com/stats/v1/global/", requestOptions)
 
   //getting response as JSON
   .then(response => response.json())
@@ -124,6 +125,7 @@ function getData() {
         for all the countries starting with this letter, if it has two letters looking for all the countries starting with those two
         letters, so on and so fourth
         */
+
         if (item.substring(0,inputValue.length) == inputValue && inputValue != "") {
 
           //creating element for the result, for each match found a new element will be created
@@ -194,7 +196,7 @@ function getData() {
         console.log("started api call");
 
         //fetching the data for that country using API Fetch method
-        fetch("https://api.smartable.ai/coronavirus/stats/" + countryNameCode[insertedCountry], requestOptions)
+        fetch("https://coronavirus-smartable.p.rapidapi.com/stats/v1/" + countryNameCode[insertedCountry] + "/", requestOptions)
           .then(response => response.json())
           .then(result => {
 
@@ -266,7 +268,7 @@ function getData() {
 function insertNews() {
 
   //calling the api to get global lates news
-  fetch("https://api.smartable.ai/coronavirus/news/global", requestOptions)
+  fetch("https://coronavirus-smartable.p.rapidapi.com/news/v1/global/", requestOptions)
 
     .then(response => response.json())
 
