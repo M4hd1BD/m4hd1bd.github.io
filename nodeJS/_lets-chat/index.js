@@ -15,10 +15,6 @@ app.use(express.static("public"));
 // Socket setup
 const io = socket(server);
 
-io.on("connection", function (socket) {
-  console.log("Made socket connection");
-});
-
 const activeUsers = new Set();
 
 io.on("connection", function (socket) {
@@ -34,4 +30,9 @@ io.on("connection", function (socket) {
     activeUsers.delete(socket.userId);
     io.emit("user disconnected", socket.userId);
   });
+
+  socket.on("chat message", function (data) {
+    io.emit("chat message", data);
+  });
+  
 });
