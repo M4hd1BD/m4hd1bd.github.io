@@ -1,6 +1,6 @@
 const socket = io();
 
-const inboxPeople = document.querySelector(".inbox__people");
+const inboxPeople = document.querySelector(".onlineUsers");
 
 let userName = "";
 
@@ -16,7 +16,7 @@ const addToUsersBox = (userName) => {
   }
 
   const userBox = `
-    <div class="chat_ib ${userName}-userlist">
+    <div class="chat_ib ${userName}-userlist py-3">
       <h5>${userName}</h5>
     </div>
   `;
@@ -38,33 +38,31 @@ socket.on("user disconnected", function (userName) {
 const inputField = document.querySelector(".message_form__input");
 const messageForm = document.querySelector(".message_form");
 const messageBox = document.querySelector(".messages__history");
+const mainInbox = document.querySelector(".inbox__messages");
 
 const addNewMessage = ({ user, message }) => {
   const time = new Date();
   const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
 
   const receivedMsg = `
-  <div class="incoming__message">
-    <div class="received__message">
+  <div class="incoming__message clearfix">
+    <div class="received__message px-3 py-2 float-left my-1">
       <p>${message}</p>
       <div class="message__info">
-        <span class="message__author">${user}</span>
-        <span class="time_date">${formattedTime}</span>
+        <span class="message__author font-weight-lighter">${user}</span>
       </div>
     </div>
   </div>`;
 
   const myMsg = `
-  <div class="outgoing__message">
-    <div class="sent__message">
+  <div class="outgoing__message clearfix">
+    <div class="sent__message px-3 py-2 float-right my-1">
       <p>${message}</p>
-      <div class="message__info">
-        <span class="time_date">${formattedTime}</span>
-      </div>
     </div>
   </div>`;
 
   messageBox.innerHTML += user === userName ? myMsg : receivedMsg;
+  mainInbox.scrollTop = mainInbox.scrollHeight;
 };
 
 messageForm.addEventListener("submit", (e) => {
