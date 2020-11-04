@@ -25,7 +25,7 @@ client.on('message', message => {
 	if (!message.content.startsWith(prfx) || message.author.bot) return;
 
 	const args = message.content.slice(prfx.length).trim().split(/ +/);
-	const commandName = args.shift().toLowerCase();
+	const commandName = args.shift();
 
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
