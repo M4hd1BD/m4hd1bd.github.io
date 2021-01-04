@@ -27,7 +27,7 @@
 .onlineUsers {
   height: 85%;
   overflow: auto;
-  color: #3E8EF7;
+  color: #4287f5;
 }
 
 .inbox__messages {
@@ -55,21 +55,25 @@
 }
 
 .sent__message {
-  background-color: #7988a3;
+  background-color: #b5392d;
   border-radius: 15px;
   border-bottom-right-radius: 0px;
   color:white;
+  max-width: 30%;
+  font-weight: 600;
 }
 
 .received__message {
-  background-color: #222222;
+  background-color: #282828;
   border-radius: 15px;
   border-bottom-left-radius: 0px;
   color:white;
+  max-width: 30%;
+  font-weight: 600;
 }
 
-.message__info {
-
+.message__author {
+  color: #4287f5;
 }
 .unameForm {
   display: block;

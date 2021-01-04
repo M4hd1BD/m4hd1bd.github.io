@@ -6,6 +6,7 @@ const unameWindow = document.querySelector(".unamePrompt");
 const mainWindow = document.querySelector(".mainWindowContainer");
 const unameBox = document.querySelector(".unameBox");
 const warning = document.querySelector(".warningMessage");
+const inputField = document.querySelector(".message_form__input");
 let userName = "";
 
 const newUserConnected = (user) => {
@@ -22,13 +23,13 @@ const addToUsersBox = (userName) => {
 
   const userBox = `
     <div class="chat_ib ${userName}-userlist">
-      <h5>${userName}</h5>
+      <h5 class = "font-weight-bold">${userName}</h5>
     </div>
   `;
   inboxPeople.innerHTML += userBox;
   unameWindow.style.display = "none";
   mainWindow.style.display = "block";
-
+  inputField.focus();
 };
 
 // new user is created so we generate nickname and emit event
@@ -60,8 +61,6 @@ socket.on("user disconnected", function (userName) {
   document.querySelector(`.${userName}-userlist`).remove();
 });
 
-
-const inputField = document.querySelector(".message_form__input");
 const messageForm = document.querySelector(".message_form");
 const messageBox = document.querySelector(".messages__history");
 const mainInbox = document.querySelector(".inbox__messages");
@@ -73,17 +72,15 @@ const addNewMessage = ({ user, message }) => {
   const receivedMsg = `
   <div class="incoming__message clearfix">
     <div class="received__message px-3 pt-3 float-left my-1">
-      <p>${message}</p>
-    </div>
-    <div class="message__info float-left">
-      <span class="message__author font-weight-lighter">${user}</span>
+      <p class="message__author font-weight-bold">${user}</p>
+      <p class = "text-break">${message}</p>
     </div>
   </div>`;
 
   const myMsg = `
   <div class="outgoing__message clearfix">
     <div class="sent__message px-3 pt-3 float-right my-1">
-      <p>${message}</p>
+      <p class = "text-break">${message}</p>
     </div>
   </div>`;
 
@@ -102,6 +99,7 @@ messageForm.addEventListener("submit", (e) => {
     nick: userName,
   });
 
+  inputField.focus();
   inputField.value = "";
 });
 
