@@ -1,13 +1,18 @@
 const socket = io();
 
 const inboxPeople = document.querySelector(".onlineUsers");
-
+const unameForm = document.querySelector(".unameForm");
+const unameWindow = document.querySelector(".unamePrompt");
+const mainWindow = document.querySelector(".mainWindowContainer");
+const unameBox = document.querySelector(".unameBox");
+const warning = document.querySelector(".warningMessage");
 let userName = "";
 
 const newUserConnected = (user) => {
-  userName = user || `User${Math.floor(Math.random() * 1000000)}`;
+  userName = user;
+
+  //emitting this so that it gets picked by server
   socket.emit("new user", userName);
-  addToUsersBox(userName);
 };
 
 const addToUsersBox = (userName) => {
@@ -16,18 +21,39 @@ const addToUsersBox = (userName) => {
   }
 
   const userBox = `
-    <div class="chat_ib ${userName}-userlist py-3">
+    <div class="chat_ib ${userName}-userlist">
       <h5>${userName}</h5>
     </div>
   `;
   inboxPeople.innerHTML += userBox;
+  unameWindow.style.display = "none";
+  mainWindow.style.display = "block";
+
 };
 
 // new user is created so we generate nickname and emit event
-newUserConnected();
+unameForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!unameBox.value) {
+    return;
+  }
 
+  let user = unameBox.value;
+  newUserConnected(user);
+
+  unameBox.value = "";
+});
+
+//this gets triggered when server emits the event
 socket.on("new user", function (data) {
-  data.map((user) => addToUsersBox(user));
+
+  if (data == true) {
+    warning.style.display = "block";
+  }
+  else {
+    //getting the userlist from server and addint them to the page one by one
+    data.map((user) => addToUsersBox(user));
+  }
 });
 
 socket.on("user disconnected", function (userName) {
@@ -46,17 +72,17 @@ const addNewMessage = ({ user, message }) => {
 
   const receivedMsg = `
   <div class="incoming__message clearfix">
-    <div class="received__message px-3 py-2 float-left my-1">
+    <div class="received__message px-3 pt-3 float-left my-1">
       <p>${message}</p>
-      <div class="message__info">
-        <span class="message__author font-weight-lighter">${user}</span>
-      </div>
+    </div>
+    <div class="message__info float-left">
+      <span class="message__author font-weight-lighter">${user}</span>
     </div>
   </div>`;
 
   const myMsg = `
   <div class="outgoing__message clearfix">
-    <div class="sent__message px-3 py-2 float-right my-1">
+    <div class="sent__message px-3 pt-3 float-right my-1">
       <p>${message}</p>
     </div>
   </div>`;

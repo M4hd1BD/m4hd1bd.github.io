@@ -16,14 +16,22 @@ app.use(express.static("public"));
 const io = socket(server);
 
 const activeUsers = new Set();
+let alreadyHas = false;
 
 io.on("connection", function (socket) {
   console.log("Made socket connection");
 
   socket.on("new user", function (data) {
-    socket.userId = data;
-    activeUsers.add(data);
-    io.emit("new user", [...activeUsers]);
+    if (!activeUsers.has(data)) {
+      socket.userId = data;
+      activeUsers.add(data);
+      io.emit("new user", [...activeUsers]);
+    }
+    else {
+      alreadyHas = true;
+      io.emit("new user", alreadyHas);
+      console.log("emitted");
+    }
   });
 
   socket.on("disconnect", () => {
@@ -34,5 +42,5 @@ io.on("connection", function (socket) {
   socket.on("chat message", function (data) {
     io.emit("chat message", data);
   });
-  
+
 });

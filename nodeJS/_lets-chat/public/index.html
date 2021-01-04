@@ -13,44 +13,60 @@
 
     <section class="mainContainer container-fluid vh-100">
 
-      <div class="row">
+      <div class="row unamePrompt">
 
-        <div class="col-2 activeUsers py-4 px-5 vh-100">
+        <div class="col-12">
 
-          <h2 class="py-5 mb-5">Active Users</h2>
+          <form class="unameForm" method="post">
+            <input type="text" name="uName" placeholder="Enter a unique username" class="unameBox p-3" autofocus>
+            <button type="submit" name="unameSubmit" class="unameSubmit p-3">Let's go</button>
+          </form>
+          <p style="display:none;color:red;" class="warningMessage">username already in use</p>
 
-          <div class="onlineUsers">
+        </div>
+
+      </div>
+
+      <div class="mainWindowContainer" style="display:none;">
+        <div class="row mainWindow vh-100">
+
+          <div class="col-2 activeUsers py-4 px-5 h-100">
+
+            <h2 class="py-5 mb-5">Active Users</h2>
+
+            <div class="onlineUsers">
+
+            </div>
+
+          </div>
+
+          <div class="col-1 h-100">
+
+          </div>
+
+          <div class="col-8 messages h-100">
+
+            <div class="inbox__messages clearfix">
+              <div class="messages__history my-5 clearfix"></div>
+              <div class="fallback"></div>
+            </div>
+
+            <div class="messageForm w-100">
+              <form class="message_form my-3">
+                <input type="text" class="message_form__input p-3" placeholder="Type a message" autofocus/>
+                <button class="message_form__button p-3" type="submit">
+                  Enter
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+          <div class="col-1 h-100">
 
           </div>
 
         </div>
-
-        <div class="col-1">
-
-        </div>
-
-        <div class="col-8 messages vh-100">
-
-          <div class="inbox__messages clearfix">
-            <div class="messages__history my-5 clearfix"></div>
-            <div class="fallback"></div>
-          </div>
-
-          <div class="messageForm w-100">
-            <form class="message_form my-3">
-              <input type="text" class="message_form__input p-3" placeholder="Type a message" autofocus/>
-              <button class="message_form__button p-3" type="submit">
-                Enter
-              </button>
-            </form>
-          </div>
-
-        </div>
-
-        <div class="col-1">
-
-        </div>
-
       </div>
 
     </section>
