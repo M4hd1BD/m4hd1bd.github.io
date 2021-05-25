@@ -8,6 +8,7 @@
   display: flex;
   padding: 15px;
   align-items: center;
+  max-width: 100%;
 }
 
 .logo {
@@ -23,12 +24,18 @@
   border: 1px solid #6f747b;
   height: 2em;
   border-radius: 5px;
+  padding: 10px;
 }
 
 #headerSearch:focus {
   border: 1px solid #388bfd;
 }
 
+#headerSearch::placeholder {
+  color: #f0f6fc;
+  padding: 5px;
+  font-weight: bolder;
+}
 .links {
   margin: 0 5px;
 }
