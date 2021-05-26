@@ -6,7 +6,7 @@
     <title>Github Repositories Finder</title>
   </head>
   <body>
-    <header class="navHeader">
+    <header class="navHeader" style="display: none">
       <div class="logo">
         <a href="./index.html">
           <img src="./images/gitMark.png" alt="Github Logo" />
@@ -40,7 +40,7 @@
       </div>
     </header>
 
-    <header class="mobileHeader">
+    <header class="mobileHeader" style="display: none">
       <div class="menuButton">
         <a href="./forbiddent.html">
           <img src="./images/menu.svg" alt="Menu Button" />
@@ -58,7 +58,18 @@
       </div>
     </header>
 
-    <section class="mainSection">
+    <section class="primarySection">
+      <input
+        type="text"
+        name="mainSearch"
+        id="mainSearch"
+        class="defaultSearch"
+        placeholder="Enter username to search..."
+      />
+      <button type="submit" id="submitButton">Get</button>
+    </section>
+
+    <section class="mainSection" style="display: none">
       <div class="profileInfo">
         <div class="profilePicture">
           <img id="mainProPic" src="./images/man.svg" alt="Profile Picture" />
