@@ -17,6 +17,7 @@
           type="text"
           name="Search"
           id="headerSearch"
+          class="defaultSearch"
           placeholder="Search or jump to..."
         />
       </div>
@@ -42,52 +43,183 @@
     <section class="mainSection">
       <div class="profileInfo">
         <div class="profilePicture">
-          <img src="./forbidden.html" alt="Profile Picture" />
+          <img id="mainProPic" src="./images/man.svg" alt="Profile Picture" />
         </div>
         <div class="profileName">
-          <p></p>
+          <h1 id="mainProName">John Doe</h1>
         </div>
         <div class="profileUsername">
-          <p></p>
+          <h3 id="mainProUsername">johndoe</h3>
         </div>
         <div class="profileBio">
-          <p></p>
-        </div>
-        <div class="editProfile">
-          <button>Edit profile</button>
-        </div>
-        <div class="profileStats">
-          <p></p>
-          <p></p>
-          <p></p>
-        </div>
-        <div class="profileContacts">
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p id="mainProBio">I'm not real.</p>
         </div>
       </div>
 
       <div class="repoInfos">
         <div class="repoTiles">
-          <a href="./forbidden.html">Overview</a>
-          <a href="./forbidden.html">Repositories</a>
-          <a href="./forbidden.html">Projects</a>
-          <a href="./forbidden.html">Packages</a>
+          <div class="repoTile">
+            <img src="./images/book.svg" alt="Overview" />
+            <a href="./forbidden.html">Overview</a>
+          </div>
+          <div class="repoTile" id="active">
+            <img src="./images/repo.svg" alt="Repositories" />
+            <a href="./forbidden.html">Repositories</a>
+          </div>
+          <div class="repoTile">
+            <img src="./images/bar-chart.svg" alt="Projects" />
+            <a href="./forbidden.html">Projects</a>
+          </div>
+          <div class="repoTile">
+            <img src="./images/box.svg" alt="Packages" />
+            <a href="./forbidden.html">Packages</a>
+          </div>
         </div>
-        <div class="repoActions">
-          <input type="text" name="Search" id="repoActionSearch" />
+        <div class="repoAction">
+          <input
+            type="text"
+            name="Search"
+            id="repoActionSearch"
+            class="defaultSearch"
+            placeholder="Find a repository..."
+          />
         </div>
         <div class="repos">
-          <p id="repoResult"></p>
+          <div class="repoResult">
+            <p>
+              <span id="repoCount" style="font-weight: bolder">26</span> results
+              for public repositories
+            </p>
+          </div>
           <div class="repoCard">
-            <a href="#" class="repoTitle"></a>
-            <p class="repoLanguage"></p>
-            <p class="repoStars"></p>
-            <p class="repoForks"></p>
-            <p class="repoLastUpdate"></p>
-            <button class="repoStar">Star</button>
+            <h3>
+              <a href="./forbidden.html" class="repoTitle">Cool OSS Project</a>
+            </h3>
+            <div class="repoMeta">
+              <div class="repoLanguage">
+                <span></span>
+                <p>HTML</p>
+              </div>
+              <div class="repoStars">
+                <img src="./images/star.svg" alt="Stars" />
+                <p>15</p>
+              </div>
+              <div class="repoForks">
+                <img src="./images/branch-elements.svg" alt="Forks" />
+                <p>3</p>
+              </div>
+              <p class="repoLastUpdate">
+                Updated on <span id="updateDate">1 October</span>
+              </p>
+              <div class="repoStar">
+                <img src="./images/star.svg" alt="Star" />
+                <p>Star</p>
+              </div>
+            </div>
+          </div>
+          <div class="repoCard">
+            <h3>
+              <a href="./forbidden.html" class="repoTitle">Cool OSS Project</a>
+            </h3>
+            <div class="repoMeta">
+              <div class="repoLanguage">
+                <span></span>
+                <p>HTML</p>
+              </div>
+              <div class="repoStars">
+                <img src="./images/star.svg" alt="Stars" />
+                <p>15</p>
+              </div>
+              <div class="repoForks">
+                <img src="./images/branch-elements.svg" alt="Forks" />
+                <p>3</p>
+              </div>
+              <p class="repoLastUpdate">
+                Updated on <span id="updateDate">1 October</span>
+              </p>
+              <div class="repoStar">
+                <img src="./images/star.svg" alt="Star" />
+                <p>Star</p>
+              </div>
+            </div>
+          </div>
+          <div class="repoCard">
+            <h3>
+              <a href="./forbidden.html" class="repoTitle">Cool OSS Project</a>
+            </h3>
+            <div class="repoMeta">
+              <div class="repoLanguage">
+                <span></span>
+                <p>HTML</p>
+              </div>
+              <div class="repoStars">
+                <img src="./images/star.svg" alt="Stars" />
+                <p>15</p>
+              </div>
+              <div class="repoForks">
+                <img src="./images/branch-elements.svg" alt="Forks" />
+                <p>3</p>
+              </div>
+              <p class="repoLastUpdate">
+                Updated on <span id="updateDate">1 October</span>
+              </p>
+              <div class="repoStar">
+                <img src="./images/star.svg" alt="Star" />
+                <p>Star</p>
+              </div>
+            </div>
+          </div>
+          <div class="repoCard">
+            <h3>
+              <a href="./forbidden.html" class="repoTitle">Cool OSS Project</a>
+            </h3>
+            <div class="repoMeta">
+              <div class="repoLanguage">
+                <span></span>
+                <p>HTML</p>
+              </div>
+              <div class="repoStars">
+                <img src="./images/star.svg" alt="Stars" />
+                <p>15</p>
+              </div>
+              <div class="repoForks">
+                <img src="./images/branch-elements.svg" alt="Forks" />
+                <p>3</p>
+              </div>
+              <p class="repoLastUpdate">
+                Updated on <span id="updateDate">1 October</span>
+              </p>
+              <div class="repoStar">
+                <img src="./images/star.svg" alt="Star" />
+                <p>Star</p>
+              </div>
+            </div>
+          </div>
+          <div class="repoCard">
+            <h3>
+              <a href="./forbidden.html" class="repoTitle">Cool OSS Project</a>
+            </h3>
+            <div class="repoMeta">
+              <div class="repoLanguage">
+                <span></span>
+                <p>HTML</p>
+              </div>
+              <div class="repoStars">
+                <img src="./images/star.svg" alt="Stars" />
+                <p>15</p>
+              </div>
+              <div class="repoForks">
+                <img src="./images/branch-elements.svg" alt="Forks" />
+                <p>3</p>
+              </div>
+              <p class="repoLastUpdate">
+                Updated on <span id="updateDate">1 October</span>
+              </p>
+              <div class="repoStar">
+                <img src="./images/star.svg" alt="Star" />
+                <p>Star</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
