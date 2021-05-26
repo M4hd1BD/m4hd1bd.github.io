@@ -268,3 +268,47 @@ body {
   color: #c9d1d9;
   padding-left: 5px;
 }
+
+.mobileHeader {
+  background-color: #161b22;
+  display: none;
+  padding: 15px;
+  align-items: center;
+  max-width: 100%;
+}
+
+.menuButton img {
+  width: 28px;
+  height: 28px;
+}
+
+.mobileLogo {
+  margin: 0 auto;
+}
+
+.mobileHeaderIcons img {
+  width: 28px;
+  height: 28px;
+}
+
+@media only screen and (max-width: 768px) {
+  .navHeader {
+    display: none;
+  }
+
+  .mobileHeader {
+    display: flex;
+  }
+  .profileInfo {
+    display: none;
+  }
+
+  .repoInfos {
+    margin: 0 auto;
+  }
+
+  .repoInfos a,
+  p {
+    font-size: 2vw;
+  }
+}
