@@ -66,6 +66,12 @@
           id="mainSearch"
           class="defaultSearch"
           placeholder="Enter username to search..."
+          onkeyup="function enterHandler(event){
+            if(event.keyCode == 13) {
+              submitHandler();
+            }
+          };
+          enterHandler(event)"
         />
         <button type="submit" id="submitButton" onclick="submitHandler()">
           Get
