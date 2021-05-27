@@ -28,6 +28,7 @@ body {
   border: 1px solid #6f747b;
   border-radius: 5px;
   padding: 10px;
+  color: white;
 }
 
 .defaultSearch:focus {
@@ -157,9 +158,6 @@ body {
 #repoActionSearch {
   height: 2.2em;
   width: 90%;
-}
-
-.repos {
 }
 
 .repoResult {
@@ -292,26 +290,27 @@ body {
 }
 
 .primarySection {
+  max-width: 1320px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  margin: auto;
 }
 
 #mainSearch {
-  width: 50%;
+  width: 40%;
 }
 
 #submitButton {
-  width: 50%;
+  width: 10%;
   padding: 10px;
   border: 1px solid #6f747b;
   border-radius: 5px;
   background-color: #21262d;
   color: #f9826c;
   font-size: 1.5ch;
-  margin: 20px 0;
 }
 
 #submitButton:hover {
@@ -336,5 +335,18 @@ body {
   .repoInfos a,
   p {
     font-size: 2vw;
+  }
+
+  .primarySection {
+    flex-direction: column;
+  }
+
+  #mainSearch {
+    width: 50%;
+  }
+
+  #submitButton {
+    width: 50%;
+    margin: 20px 0;
   }
 }
