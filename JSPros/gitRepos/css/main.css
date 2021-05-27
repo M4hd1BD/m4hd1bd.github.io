@@ -327,10 +327,11 @@ body {
 #error {
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
 }
 
-#error h3 {
+#error h3,
+h1 {
+  margin-top: 15px;
   color: crimson;
 }
 .hideStuff {
