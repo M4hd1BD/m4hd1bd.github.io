@@ -292,6 +292,7 @@ body {
 .primarySection {
   max-width: 1320px;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -299,6 +300,12 @@ body {
   margin: auto;
 }
 
+.searchArea {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #mainSearch {
   width: 40%;
 }
@@ -317,6 +324,15 @@ body {
   background-color: #0d1117;
 }
 
+#error {
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+#error h3 {
+  color: crimson;
+}
 .hideStuff {
   display: none !important;
 }
@@ -341,7 +357,7 @@ body {
     font-size: 2vw;
   }
 
-  .primarySection {
+  .searchArea {
     flex-direction: column;
   }
 

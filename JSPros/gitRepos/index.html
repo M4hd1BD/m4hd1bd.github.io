@@ -58,19 +58,23 @@
       </div>
     </header>
 
-    <section class="primarySection" id="primSection" style="display: flex">
-      <input
-        type="text"
-        name="mainSearch"
-        id="mainSearch"
-        class="defaultSearch"
-        placeholder="Enter username to search..."
-      />
-      <button type="submit" id="submitButton" onclick="submitHandler()">
-        Get
-      </button>
+    <section class="primarySection" id="primSection">
+      <div class="searchArea">
+        <input
+          type="text"
+          name="mainSearch"
+          id="mainSearch"
+          class="defaultSearch"
+          placeholder="Enter username to search..."
+        />
+        <button type="submit" id="submitButton" onclick="submitHandler()">
+          Get
+        </button>
+      </div>
+      <div class="hideStuff" id="error">
+        <h3>There was an error: <span id="errorMessage"></span></h3>
+      </div>
     </section>
-
     <section class="mainSection hideStuff" id="mainContent">
       <div class="profileInfo">
         <div class="profilePicture">

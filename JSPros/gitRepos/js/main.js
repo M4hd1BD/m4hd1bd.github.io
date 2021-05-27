@@ -5,7 +5,18 @@ const displayStuffs = () => {
   document.getElementById("mainContent").classList.remove("hideStuff");
 };
 
+const showError = (error) => {
+  const errorMessage = error.type;
+  document.getElementById("errorMessage").textContent = errorMessage;
+  document.getElementById("error").classList.remove("hideStuff");
+};
+
 const insertData = (res) => {
+  console.log(res.errors);
+  if (res.errors) {
+    showError(res.errors[0]);
+    return;
+  }
   //inserting profile picture
   document.getElementById("mainProPic").src = res.data.user.avatarUrl;
 
@@ -154,7 +165,7 @@ const submitHandler = () => {
     method: "post",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + "Your personal Access Token here",
+      Authorization: "Bearer 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",
     },
     body: JSON.stringify({
       query: `{
@@ -191,5 +202,6 @@ const submitHandler = () => {
   };
   fetch(`https://api.github.com/graphql`, opt)
     .then((res) => res.json())
-    .then((res) => insertData(res));
+    .then((res) => insertData(res))
+    .catch((error) => console.log("There's an error: " + error));
 };
