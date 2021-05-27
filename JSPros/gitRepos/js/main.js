@@ -12,11 +12,11 @@ const showError = (error) => {
 };
 
 const insertData = (res) => {
-  console.log(res.errors);
   if (res.errors) {
     showError(res.errors[0]);
     return;
   }
+
   //inserting profile picture
   document.getElementById("mainProPic").src = res.data.user.avatarUrl;
 
@@ -165,7 +165,7 @@ const submitHandler = () => {
     method: "post",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer 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",
+      Authorization: "Bearer " + "Your Personal Access Token Here",
     },
     body: JSON.stringify({
       query: `{
