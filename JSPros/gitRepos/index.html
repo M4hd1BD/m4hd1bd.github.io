@@ -19,6 +19,12 @@
           id="headerSearch"
           class="defaultSearch"
           placeholder="Search or jump to..."
+          onkeyup="function enterHandler(event){
+            if(event.keyCode == 13) {
+              submitHandler();
+            }
+          };
+          enterHandler(event)"
         />
       </div>
       <div class="links">
@@ -123,6 +129,12 @@
             id="repoActionSearch"
             class="defaultSearch"
             placeholder="Find a repository..."
+            onkeyup="function enterHandler(event){
+              if(event.keyCode == 13) {
+                submitHandler();
+              }
+            };
+            enterHandler(event)"
           />
         </div>
         <div class="repos" id="cardsSection">
