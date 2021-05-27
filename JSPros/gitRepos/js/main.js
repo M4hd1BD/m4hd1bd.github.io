@@ -154,7 +154,7 @@ const submitHandler = () => {
     method: "post",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + secrets.Token,
+      Authorization: "Bearer " + process.env.Token,
     },
     body: JSON.stringify({
       query: `{
