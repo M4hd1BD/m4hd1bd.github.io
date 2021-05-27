@@ -6,7 +6,7 @@
     <title>Github Repositories Finder</title>
   </head>
   <body>
-    <header class="navHeader" style="display: none">
+    <header class="navHeader hideStuff" id="mainNav">
       <div class="logo">
         <a href="./index.html">
           <img src="./images/gitMark.png" alt="Github Logo" />
@@ -40,7 +40,7 @@
       </div>
     </header>
 
-    <header class="mobileHeader" style="display: none">
+    <header class="mobileHeader hideStuff" id="mobileMainNav">
       <div class="menuButton">
         <a href="./forbiddent.html">
           <img src="./images/menu.svg" alt="Menu Button" />
@@ -58,7 +58,7 @@
       </div>
     </header>
 
-    <section class="primarySection">
+    <section class="primarySection" id="primSection" style="display: flex">
       <input
         type="text"
         name="mainSearch"
@@ -66,10 +66,12 @@
         class="defaultSearch"
         placeholder="Enter username to search..."
       />
-      <button type="submit" id="submitButton">Get</button>
+      <button type="submit" id="submitButton" onclick="submitHandler()">
+        Get
+      </button>
     </section>
 
-    <section class="mainSection" style="display: none">
+    <section class="mainSection hideStuff" id="mainContent">
       <div class="profileInfo">
         <div class="profilePicture">
           <img id="mainProPic" src="./images/man.svg" alt="Profile Picture" />
@@ -113,145 +115,17 @@
             placeholder="Find a repository..."
           />
         </div>
-        <div class="repos">
+        <div class="repos" id="cardsSection">
           <div class="repoResult">
             <p>
               <span id="repoCount" style="font-weight: bolder">26</span> results
               for public repositories
             </p>
           </div>
-          <div class="repoCard">
-            <h3>
-              <a href="./forbidden.html" class="repoTitle">Cool OSS Project</a>
-            </h3>
-            <div class="repoMeta">
-              <div class="repoLanguage">
-                <span></span>
-                <p>HTML</p>
-              </div>
-              <div class="repoStars">
-                <img src="./images/star.svg" alt="Stars" />
-                <p>15</p>
-              </div>
-              <div class="repoForks">
-                <img src="./images/branch-elements.svg" alt="Forks" />
-                <p>3</p>
-              </div>
-              <p class="repoLastUpdate">
-                Updated on <span id="updateDate">1 October</span>
-              </p>
-              <div class="repoStar">
-                <img src="./images/star.svg" alt="Star" />
-                <p>Star</p>
-              </div>
-            </div>
-          </div>
-          <div class="repoCard">
-            <h3>
-              <a href="./forbidden.html" class="repoTitle">Cool OSS Project</a>
-            </h3>
-            <div class="repoMeta">
-              <div class="repoLanguage">
-                <span></span>
-                <p>HTML</p>
-              </div>
-              <div class="repoStars">
-                <img src="./images/star.svg" alt="Stars" />
-                <p>15</p>
-              </div>
-              <div class="repoForks">
-                <img src="./images/branch-elements.svg" alt="Forks" />
-                <p>3</p>
-              </div>
-              <p class="repoLastUpdate">
-                Updated on <span id="updateDate">1 October</span>
-              </p>
-              <div class="repoStar">
-                <img src="./images/star.svg" alt="Star" />
-                <p>Star</p>
-              </div>
-            </div>
-          </div>
-          <div class="repoCard">
-            <h3>
-              <a href="./forbidden.html" class="repoTitle">Cool OSS Project</a>
-            </h3>
-            <div class="repoMeta">
-              <div class="repoLanguage">
-                <span></span>
-                <p>HTML</p>
-              </div>
-              <div class="repoStars">
-                <img src="./images/star.svg" alt="Stars" />
-                <p>15</p>
-              </div>
-              <div class="repoForks">
-                <img src="./images/branch-elements.svg" alt="Forks" />
-                <p>3</p>
-              </div>
-              <p class="repoLastUpdate">
-                Updated on <span id="updateDate">1 October</span>
-              </p>
-              <div class="repoStar">
-                <img src="./images/star.svg" alt="Star" />
-                <p>Star</p>
-              </div>
-            </div>
-          </div>
-          <div class="repoCard">
-            <h3>
-              <a href="./forbidden.html" class="repoTitle">Cool OSS Project</a>
-            </h3>
-            <div class="repoMeta">
-              <div class="repoLanguage">
-                <span></span>
-                <p>HTML</p>
-              </div>
-              <div class="repoStars">
-                <img src="./images/star.svg" alt="Stars" />
-                <p>15</p>
-              </div>
-              <div class="repoForks">
-                <img src="./images/branch-elements.svg" alt="Forks" />
-                <p>3</p>
-              </div>
-              <p class="repoLastUpdate">
-                Updated on <span id="updateDate">1 October</span>
-              </p>
-              <div class="repoStar">
-                <img src="./images/star.svg" alt="Star" />
-                <p>Star</p>
-              </div>
-            </div>
-          </div>
-          <div class="repoCard">
-            <h3>
-              <a href="./forbidden.html" class="repoTitle">Cool OSS Project</a>
-            </h3>
-            <div class="repoMeta">
-              <div class="repoLanguage">
-                <span></span>
-                <p>HTML</p>
-              </div>
-              <div class="repoStars">
-                <img src="./images/star.svg" alt="Stars" />
-                <p>15</p>
-              </div>
-              <div class="repoForks">
-                <img src="./images/branch-elements.svg" alt="Forks" />
-                <p>3</p>
-              </div>
-              <p class="repoLastUpdate">
-                Updated on <span id="updateDate">1 October</span>
-              </p>
-              <div class="repoStar">
-                <img src="./images/star.svg" alt="Star" />
-                <p>Star</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
+
+    <script src="./js/main.js"></script>
   </body>
 </html>

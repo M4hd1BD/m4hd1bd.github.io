@@ -316,6 +316,10 @@ body {
 #submitButton:hover {
   background-color: #0d1117;
 }
+
+.hideStuff {
+  display: none !important;
+}
 @media only screen and (max-width: 768px) {
   .navHeader {
     display: none;
